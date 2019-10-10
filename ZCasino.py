@@ -38,23 +38,26 @@ except ValueError:
 
 while play_again==True:  
     
-    nb_player=input("Veuillez indiquer le nombre entre 0 et 49 sur lequel vous misez : ")
-   
-    while nb_player>49 or nb_player<0 or nb_player!=int(nb_player):   
-          
-        if nb_player>49:
-            nb_player=input("Merci d'indiquer un nombre inférieur à 49 : ")
-            nb_player = int(nb_player)
-        elif nb_player<0:
-            nb_player=input("Merci d'indiquer un nombre supérieur ou égal à 0 : ")
+    #nb_player=input("Veuillez indiquer le nombre entre 0 et 49 sur lequel vous misez : ")
+    
+    while True:   
+        nb_player=input("Veuillez indiquer le nombre entre 0 et 49 sur lequel vous misez : ")
+        try:
             nb_player=int(nb_player)
+        except ValueError:
+            print("Vous devez miser sur un NOMBRE entre 0 et 49.")
+            continue
+        nb_player=int(nb_player)
+        if nb_player>49:
+            print("Vous devez miser sur un nombre inférieur ou égal à 49.")
+            continue
+        elif nb_player<0:
+            print("Vous devez miser sur un nombre supérieur ou égal à 0.")
+            continue
         else:
-            try:
-                nb_player=int(nb_player)
-            except ValueError:
-                nb_player=input("Merci d'indiquer un NOMBRE entre 0 et 49 : ")
+            break
+            
         
-     
     sum=input("Quelle somme (en euros) misez-vous sur ce nombre ? ")
     sum=float(sum)
    
@@ -101,9 +104,9 @@ while play_again==True:
     if money==0:
         print("J'ai bien peur que vous n'ayiez plus un sou. A une prochaine fois !")
         break
-   #problème boucle nb misé
+ 
    #cas où il reste 0 à revoir 
-   #les différents cas où des lettres sont saisies à la place de chiffres (chapitre exceptions)
+   #Autres cas où des lettres sont saisies à la place de chiffres
     
 
 
